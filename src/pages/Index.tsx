@@ -3,7 +3,6 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import Icon from '@/components/ui/icon';
 import { Calendar } from '@/components/ui/calendar';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
@@ -248,91 +247,55 @@ const Index = () => {
               <CardTitle className="text-2xl">Форма бронирования</CardTitle>
               <CardDescription>Заполните форму, и мы свяжемся с вами в ближайшее время</CardDescription>
             </CardHeader>
-            <CardContent>
-              <Tabs defaultValue="quick" className="w-full">
-                <TabsList className="grid w-full grid-cols-2">
-                  <TabsTrigger value="quick">Быстрая заявка</TabsTrigger>
-                  <TabsTrigger value="detailed">Подробная заявка</TabsTrigger>
-                </TabsList>
-                <TabsContent value="quick" className="space-y-4 mt-6">
-                  <div className="space-y-2">
-                    <Label htmlFor="name">Ваше имя</Label>
-                    <Input id="name" placeholder="Иван Иванов" />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="phone">Телефон</Label>
-                    <Input id="phone" type="tel" placeholder="+7 (999) 123-45-67" />
-                  </div>
-                  <div className="space-y-2">
-                    <Label>Дата аренды</Label>
-                    <Popover>
-                      <PopoverTrigger asChild>
-                        <Button variant="outline" className="w-full justify-start text-left font-normal">
-                          <Icon name="CalendarDays" className="mr-2" size={16} />
-                          {date ? format(date, 'PPP', { locale: ru }) : 'Выберите дату'}
-                        </Button>
-                      </PopoverTrigger>
-                      <PopoverContent className="w-auto p-0" align="start">
-                        <Calendar mode="single" selected={date} onSelect={setDate} initialFocus />
-                      </PopoverContent>
-                    </Popover>
-                  </div>
-                  <Button className="w-full" size="lg">
-                    <Icon name="Send" className="mr-2" size={18} />
-                    Отправить заявку
-                  </Button>
-                </TabsContent>
-                <TabsContent value="detailed" className="space-y-4 mt-6">
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <Label htmlFor="name2">Ваше имя</Label>
-                      <Input id="name2" placeholder="Иван Иванов" />
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="email">Email</Label>
-                      <Input id="email" type="email" placeholder="ivan@example.com" />
-                    </div>
-                  </div>
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <Label htmlFor="phone2">Телефон</Label>
-                      <Input id="phone2" type="tel" placeholder="+7 (999) 123-45-67" />
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="guests">Количество гостей</Label>
-                      <Input id="guests" type="number" placeholder="6" min="1" max="20" />
-                    </div>
-                  </div>
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <Label>Дата начала</Label>
-                      <Popover>
-                        <PopoverTrigger asChild>
-                          <Button variant="outline" className="w-full justify-start text-left font-normal">
-                            <Icon name="CalendarDays" className="mr-2" size={16} />
-                            {date ? format(date, 'PPP', { locale: ru }) : 'Выберите дату'}
-                          </Button>
-                        </PopoverTrigger>
-                        <PopoverContent className="w-auto p-0" align="start">
-                          <Calendar mode="single" selected={date} onSelect={setDate} initialFocus />
-                        </PopoverContent>
-                      </Popover>
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="duration">Длительность</Label>
-                      <Input id="duration" placeholder="4 часа" />
-                    </div>
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="message">Комментарий</Label>
-                    <Input id="message" placeholder="Особые пожелания или вопросы" />
-                  </div>
-                  <Button className="w-full" size="lg">
-                    <Icon name="Send" className="mr-2" size={18} />
-                    Отправить заявку
-                  </Button>
-                </TabsContent>
-              </Tabs>
+            <CardContent className="space-y-4">
+              <div className="grid md:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <Label htmlFor="name">Ваше имя</Label>
+                  <Input id="name" placeholder="Иван Иванов" />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="email">Email</Label>
+                  <Input id="email" type="email" placeholder="ivan@example.com" />
+                </div>
+              </div>
+              <div className="grid md:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <Label htmlFor="phone">Телефон</Label>
+                  <Input id="phone" type="tel" placeholder="+7 (999) 123-45-67" />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="guests">Количество гостей</Label>
+                  <Input id="guests" type="number" placeholder="6" min="1" max="20" />
+                </div>
+              </div>
+              <div className="grid md:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <Label>Дата начала</Label>
+                  <Popover>
+                    <PopoverTrigger asChild>
+                      <Button variant="outline" className="w-full justify-start text-left font-normal">
+                        <Icon name="CalendarDays" className="mr-2" size={16} />
+                        {date ? format(date, 'PPP', { locale: ru }) : 'Выберите дату'}
+                      </Button>
+                    </PopoverTrigger>
+                    <PopoverContent className="w-auto p-0" align="start">
+                      <Calendar mode="single" selected={date} onSelect={setDate} initialFocus />
+                    </PopoverContent>
+                  </Popover>
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="duration">Длительность</Label>
+                  <Input id="duration" placeholder="4 часа" />
+                </div>
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="message">Комментарий</Label>
+                <Input id="message" placeholder="Особые пожелания или вопросы" />
+              </div>
+              <Button className="w-full" size="lg">
+                <Icon name="Send" className="mr-2" size={18} />
+                Отправить заявку
+              </Button>
             </CardContent>
           </Card>
         </div>
